@@ -3,6 +3,6 @@ import { submitController } from "../controllers/submitController.js"
 
 const router = express.Router()
 
-router.post('/:id', submitController)
+router.post('/', submitController)
 
 export default router;
