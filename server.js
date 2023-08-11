@@ -3,7 +3,6 @@ import submitRoute from './routes/submitRoute.js'
 import problemRoute from './routes/problemRoute.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import { pool } from './db.js'
 
 dotenv.config()
 
