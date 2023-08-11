@@ -22,7 +22,16 @@ const Editor = () => {
 		return () => editor?.dispose();
 	}, [monacoEl.current]);
 
-	return <div className={styles.Editor} ref={monacoEl}></div>;
+	return (
+		<div>
+			<div className={styles.Editor} ref={monacoEl}></div>
+			<button onClick={() => {
+				if (editor) {
+					console.log(editor.getValue())
+				}
+			}}>Submit</button>
+		</div>
+	)
 };
 
 export default Editor;

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { Homepage } from "./pages/Homepage";
-import { ProblemList } from "./pages/ProblemList";
+import ProblemList from "./pages/ProblemList";
 import Problem from "./pages/Problem";
 import "./App.css"
 
