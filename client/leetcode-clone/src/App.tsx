@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import { Homepage } from "./pages/Homepage";
-import ProblemList from "./pages/ProblemList";
+import Homepage from "./pages/Homepage";
+import Problemset from "./pages/ProblemList";
 import Problem from "./pages/Problem";
 import "./App.css"
+import Pagenotfound from "./pages/Pagenotfound";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
         <Route path='/' element={<Homepage />} />
-        <Route path='/problemlist' element={<ProblemList />} />
-        <Route path='/problem/:id' element={<Problem />} />
+        <Route path='/problemset' element={<Problemset />} />
+        <Route path='/problemset/task/:id' element={<Problem />} />
+        <Route path='*' element={<Pagenotfound />} />
       </Routes>
     </BrowserRouter>
   )

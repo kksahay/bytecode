@@ -1,5 +1,10 @@
-export const Homepage = () => {
+import Layout from "../components/layout/Layout"
+
+const Homepage = () => {
   return (
-    <div>Homepage</div>
+    <Layout>
+      <div>Homepage</div>
+    </Layout>
   )
 }
+export default Homepage
