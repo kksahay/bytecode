@@ -25,7 +25,6 @@ export const registerController = async (req, res) => {
             })
         }
         const hashedPassword = await bcrypt.hash(_password, 10)
-        const token = JWT.sign({_username}, process.env.JWT_SECRET, { expiresIn: "7d" })
         await pool.query(
             "INSERT INTO users (_username, _password) VALUES ($1, $2)", [_username, hashedPassword]
         )
