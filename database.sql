@@ -11,6 +11,6 @@ CREATE TABLE problems (
 CREATE TABLE users (
     _username VARCHAR(20) NOT NULL,
     _password VARCHAR(100) NOT NULL,
-    _role INT NOT NULL,
+    _role INT NOT NULL DEFAULT 0,
     _solved INT[]
 );
