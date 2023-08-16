@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import Problemset from "./pages/ProblemList";
+import Problemset from "./pages/Problemset";
 import Problem from "./pages/Problem";
 import "./App.css"
 import Pagenotfound from "./pages/Pagenotfound";

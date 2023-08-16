@@ -55,22 +55,21 @@ export const submitController = async (req, res) => {
 }
 export const createProblemController = async (req, res) => {
     try {
-        const { _name, _description, _difficulty, _constraint } = req.body
-        if (!_name) { return res.send("Problem name is not given") }
-        if (!_description) { return res.send("Problem Description is missing") }
-        if (!_difficulty) { return res.send("Problem difficulty is not given") }
-        if (!_constraint) { return res.send("Problem constraint is not given") }
+        const { name, description, difficulty, constraint } = req.body
+        if (!name) { return res.send("Problem name is not given") }
+        if (!description) { return res.send("Problem Description is missing") }
+        if (!difficulty) { return res.send("Problem difficulty is not given") }
+        if (!constraint) { return res.send("Problem constraint is not given") }
+        console.log(constraint)
         const problem = await pool.query(
-            "INSERT INTO (_name, _description, _difficulty, _constraint) VALUES ($1, $2, $3, $4)",
-            [_name, _description, _difficulty, _constraint]
+            "INSERT INTO problemset (_name, _description, _difficulty, _constraint) VALUES ($1, $2, $3, $4)",
+            [name, description, difficulty, constraint]
         )
         res.status(200).send({
             success: true
         })
 
     } catch (error) {
-        res.status(500).send({
-            success: false
-        })
+        res.status(500).send(error)
     }
 }

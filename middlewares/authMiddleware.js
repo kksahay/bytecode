@@ -17,9 +17,9 @@ export const requireSignIn = (req, res, next) => {
 
 export const isAdmin = async (req, res, next) => {
     try {
-        const { _username } = req.body;
+        const { username } = req.body;
         const userRole = await pool.query(
-            "SELECT _role from users WHERE _username = $1", [_username]
+            "SELECT _role from users WHERE _username = $1", [username]
         )
         if (userRole.rows[0]._role !== 1) {
             return res.status(401).send({

@@ -1,10 +1,19 @@
-.problem-page {
+.problem-section {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    flex-wrap: wrap;
-}
-.code-editor {
-    box-sizing: border-box;
-}
+    height: 80vh; /* Adjust the value as needed */
+  }
+  
+  .problem-description {
+    flex: 1;
+    padding: 16px;
+    margin-left: 16px;
+    border: 1px solid #ccc;
+    overflow-y: auto; /* Add a scrollbar if content exceeds height */
+  }
+  
+  .code-editor {
+    flex: 1;
+    padding: 16px;
+  }
+  
