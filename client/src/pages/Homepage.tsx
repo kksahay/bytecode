@@ -6,7 +6,6 @@ const Homepage = () => {
   return (
     <Layout>
       <div>Homepage</div>
-      <pre>{JSON.stringify(auth, null, 4)}</pre>
     </Layout>
   )
 }
