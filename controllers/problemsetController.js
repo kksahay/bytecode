@@ -23,36 +23,7 @@ export const taskController = async (req, res) => {
         res.status(500).send(error)
     }
 }
-export const submitController = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const code = req.files.file.data;
-        fs.writeFileSync("test.cpp", code);
-        exec("g++ -o test test.cpp", (error, stderr) => {
-            if (error) {
-                return res.send(stderr)
-            }
-            exec("./test > o.txt", (error, stderr) => {
-                if (error) {
-                    return res.send(stderr)
-                }
-                exec("rm -rf test.cpp test", (error, stderr) => {
-                    if (error) {
-                        return res.send(stderr)
-                    }
-                })
-            })
-        })
-        res.status(200).send({
-            success: true,
-            id
-        })
-    } catch (error) {
-        res.status(500).send({
-            success: false
-        })
-    }
-}
+
 export const createProblemController = async (req, res) => {
     try {
         const { name, description, difficulty, constraint } = req.body
