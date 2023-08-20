@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { Problem } from "../interfaces/BytecodeInterface";
 export default function useProblemset() {
-    const [problems, setProblems] = useState([])
+    const [problems, setProblems] = useState<Problem[]>([])
     useEffect(() => {
         const getProblems = async () => {
             try {

@@ -2,20 +2,15 @@ import { useParams } from "react-router-dom"
 import Layout from "../components/layout/Layout"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import MonacoEditor from "react-monaco-editor/lib/editor";
 import '../styles/Problem.css'
 import "monaco-editor/esm/vs/basic-languages/cpp/cpp.contribution";
+import CodeEditor from "../components/editor/CodeEditor";
+import { Problem } from "../interfaces/BytecodeInterface"
+import ProblemDetail from "../components/problemdetails/ProblemDetail"
 
-interface Problem {
-  _name: string;
-  _difficulty: string;
-  _description: string;
-  _constraint: string;
-}
-const Problem = () => {
+const ProblemPage = () => {
   const params = useParams()
   const [problem, setProblem] = useState<Problem | null>(null);
-  const [code, setCode] = useState('')
   useEffect(() => {
     const getProblem = async () => {
       try {
@@ -27,47 +22,18 @@ const Problem = () => {
     }
     getProblem()
   }, [])
-  const handleClick = (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
-    console.log(code)
-  }
+
   return (
     <Layout>
       <div className="problem-section">
-        <div className="problem-description">
-          <div>
-            {problem?._name}
-          </div>
-          <div>
-            {problem?._difficulty}
-          </div>
-          <div>
-            {problem?._description}
-          </div>
-          <div>
-            {problem?._constraint}
-          </div>
+        <div className="problem-details">
+          <ProblemDetail problem={problem} />
         </div>
         <div className="code-editor">
-          <MonacoEditor
-            language="cpp"
-            theme="vs-dark"
-            value="//Your C++ code here"
-            options={{
-              automaticLayout: true,
-              minimap: { enabled: false },
-              tabSize: 2,
-              insertSpaces: true,
-              fontFamily: "monospace",
-              fontSize: 14,
-            }}
-            onChange={setCode}
-          />
-          <button onClick={handleClick}>Submit</button>
+          <CodeEditor id={params?.id}/>
         </div>
-        
       </div>
     </Layout>
   )
 }
-export default Problem
+export default ProblemPage

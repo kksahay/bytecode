@@ -1,19 +1,18 @@
 .problem-section {
-    display: flex;
-    justify-content: space-between;
-    height: 80vh; /* Adjust the value as needed */
-  }
-  
-  .problem-description {
-    flex: 1;
-    padding: 16px;
-    margin-left: 16px;
-    border: 1px solid #ccc;
-    overflow-y: auto; /* Add a scrollbar if content exceeds height */
-  }
-  
-  .code-editor {
-    flex: 1;
-    padding: 16px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+}
+
+.problem-details {
+  flex: 1;
+  padding: 8px;
+  margin-left: 8px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.code-editor {
+  flex: 1;
+  padding: 8px;
+}
