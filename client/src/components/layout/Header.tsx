@@ -1,45 +1,33 @@
-import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../context/auth'
-
-const fixNavigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Problemset', href: '/problemset' },
-]
-const conditionalNavigation = [
-  { name: 'Login', href: '/login' },
-  { name: 'Register', href: '/register' }
-]
-
+import '../../styles/Header.css'
+import { useLocation, useNavigate } from 'react-router-dom'
 const Header = () => {
   const [auth, setAuth] = useAuth()
-
-  const navigation = (nav: { name: string, href: string }[]) => {
-    return (
-      nav.map((item) => (
-        <NavLink
-          to={item.href}
-          key={item.name}
-        >
-          {item.name}
-        </NavLink>
-      ))
-    )
-  }
-
+  const location = useLocation()
+  const navigate = useNavigate()
   const handleLogout = () => {
     setAuth({
       ...auth,
       username: null,
       token: ''
     })
-    localStorage.removeItem('auth')
+    localStorage.removeItem('auth');
+    navigate(location.pathname || '/')
   }
+  
   return (
-    <div className='bg-gray-100 flex space-x-4 py-4'>
-      {navigation(fixNavigation)}
-      {auth?.token ? (
-        <NavLink to='/' onClick={handleLogout}>Logout</NavLink>
-      ) : navigation(conditionalNavigation)}
+    <div className='nav'>
+      <button className='nav-button' onClick={() => {navigate('/')}}>ByteCode</button>
+      <div className='auth'>
+        {auth?.token ? (
+          <button className='logout-button' onClick={handleLogout}>Logout</button>
+        ) : (
+          <div className='logout'>
+            <button className='login-button' onClick={() => {navigate('/login')}}>Login</button>
+            <button className='register-button' onClick={() => {navigate('/register')}}>Register</button>
+          </div>
+        )}
+      </div>
     </div >
   )
 }
