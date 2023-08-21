@@ -6,8 +6,9 @@ import { useNavigate, useLocation } from "react-router-dom"
 import '../../styles/Auth.css'
 
 const Login = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [error, setError] = useState<string>('')
   const [auth, setAuth] = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
@@ -15,21 +16,23 @@ const Login = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/login`, {
+      const { data } = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/login`, {
         username,
         password
       })
-      if (res && res.data) {
+
+      if (data && data.success) {
         setAuth({
           ...auth,
-          username: res.data.user.username,
-          token: res.data.token
+          username: data.user.username,
+          token: data.token
         })
-        localStorage.setItem('auth', JSON.stringify(res.data))
+        localStorage.setItem('auth', JSON.stringify(data))
         navigate(location.state || '/')
       }
     } catch (error) {
-      console.log(error)
+      setError(error.response.data.message)
+      setPassword('')
     }
   }
   return (
@@ -57,6 +60,7 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   required />
               </div>
+              {error && <div style={{color: 'red'}}>{error}</div>}
               <div>
                 <button type="submit" className="login-submit">Login</button>
               </div>

@@ -6,12 +6,14 @@ export const registerController = async (req, res) => {
     try {
         const { username, password } = req.body
         if (!username) {
-            return res.send({
+            return res.status(404).send({
+                success: false,
                 message: "Username is missing"
             })
         }
         if (!password) {
-            return res.send({
+            return res.status(404).send({
+                success: false,
                 message: "Password is missing"
             })
         }
@@ -19,7 +21,7 @@ export const registerController = async (req, res) => {
             "SELECT _username FROM users WHERE _username = $1", [username]
         )
         if (existingUser.rows[0]) {
-            return res.send({
+            return res.status(404).send({
                 success: false,
                 message: "Username already exists"
             })
@@ -28,7 +30,7 @@ export const registerController = async (req, res) => {
         await pool.query(
             "INSERT INTO users (_username, _password) VALUES ($1, $2)", [username, hashedPassword]
         )
-        res.send({
+        res.status(200).send({
             success: true,
             message: "Registered Successfully",
         })
