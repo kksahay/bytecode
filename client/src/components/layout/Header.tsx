@@ -35,7 +35,7 @@ const Header = () => {
     localStorage.removeItem('auth')
   }
   return (
-    <div className='flex space-x-4 py-4'>
+    <div className='bg-gray-100 flex space-x-4 py-4'>
       {navigation(fixNavigation)}
       {auth?.token ? (
         <NavLink to='/' onClick={handleLogout}>Logout</NavLink>

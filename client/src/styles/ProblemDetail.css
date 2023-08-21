@@ -1,0 +1,15 @@
+.name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.description {
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+.input, .output, .constraint, .example, h4, p{
+    margin-bottom: 1rem;
+}
