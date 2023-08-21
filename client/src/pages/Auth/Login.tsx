@@ -3,7 +3,7 @@ import Layout from "../../components/layout/Layout"
 import axios from "axios"
 import { useAuth } from "../../context/auth"
 import { useNavigate, useLocation } from "react-router-dom"
-import '../../styles/Login.css'
+import '../../styles/Auth.css'
 
 const Login = () => {
   const [username, setUsername] = useState('')
