@@ -1,4 +1,3 @@
-
 import { Problem } from "../../interfaces/BytecodeInterface"
 import "../../styles/ProblemDetail.css"
 
@@ -17,11 +16,11 @@ const ProblemDetail = ({ problem }: { problem: Problem | null }) => {
             </div>
             <div className="output">
                 <h4>Output</h4>
-                <p>{problem?._output}</p>/
+                <p>{problem?._output}</p>
             </div>
             <div className="constraint">
                 <h4>Constraints</h4>
-                {problem?._constraint}
+                <p>{problem?._constraint}</p>
             </div>
             <div className="example">
                 <h4>Example</h4>

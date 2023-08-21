@@ -1,0 +1,39 @@
+.button {
+    border-radius: 0.2em;
+    background-color: #13007e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.8rem;
+    width: 8rem;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 0.25em;
+}
+.button:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+.submit-section {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.success {
+    flex: 1;
+    align-self: center;
+    text-align: center;
+    color: green;
+}
+.failure {
+    flex: 1;
+    align-self: center;
+    text-align: center;
+    color: red;
+}
+.login-failure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8em;
+}

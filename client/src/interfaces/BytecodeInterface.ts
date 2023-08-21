@@ -8,4 +8,5 @@ export interface Problem {
     _output: string;
     _example_input:string;
     _example_output:string;
+    _tests: number;
 }

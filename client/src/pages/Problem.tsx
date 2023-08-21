@@ -30,7 +30,7 @@ const ProblemPage = () => {
           <ProblemDetail problem={problem} />
         </div>
         <div className="code-editor">
-          <CodeEditor id={params?.id}/>
+          <CodeEditor id={params?.id} tests={problem?._tests}/>
         </div>
       </div>
     </Layout>
