@@ -8,27 +8,25 @@ const Register = () => {
     password: '',
     confirmPassword: ''
   })
+  const [error, setError] = useState<string>('')
   const navigate = useNavigate()
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (user.password !== user.confirmPassword) {
-      console.log("Password Mismatch")
+      setError("Password Mismatch")
       return;
     }
     try {
       const { username, password } = user
-      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/register`, {
+      const { data } = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/register`, {
         username,
         password
       })
-      if (res && res.data.success) {
-        console.log(res.data.message)
+      if (data && data.success) {
         navigate('/login')
-      } else {
-        console.log(res.data.message)
       }
     } catch (error) {
-      console.log(error)
+      setError(error.response.data.message)
     }
   }
 
@@ -64,6 +62,7 @@ const Register = () => {
               onChange={e => setUser({ ...user, confirmPassword: e.target.value })}
               required />
           </div>
+          {<div style={{ color: 'red' }}>{error}</div>}
           <div>
             <button type="submit" className="login-button">Register</button>
           </div>
