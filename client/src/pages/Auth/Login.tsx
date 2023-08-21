@@ -3,6 +3,7 @@ import Layout from "../../components/layout/Layout"
 import axios from "axios"
 import { useAuth } from "../../context/auth"
 import { useNavigate, useLocation } from "react-router-dom"
+import '../../styles/Auth.css'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -10,7 +11,7 @@ const Login = () => {
   const [auth, setAuth] = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
-  
+
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     try {
@@ -33,30 +34,36 @@ const Login = () => {
   }
   return (
     <Layout>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username*: </label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password*: </label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-      </form>
+      {
+        !auth?.token && (
+          <div className="container">
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label>Username*: </label>
+                <input
+                  type="text"
+                  name="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label>Password*: </label>
+                <input
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required />
+              </div>
+              <div>
+                <button type="submit" className="login-submit">Login</button>
+              </div>
+            </form>
+          </div>
+        )
+      }
     </Layout >
   )
 }

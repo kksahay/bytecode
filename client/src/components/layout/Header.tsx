@@ -22,7 +22,7 @@ const Header = () => {
         {auth?.token ? (
           <button className='logout-button' onClick={handleLogout}>Logout</button>
         ) : (
-          <div className='logout'>
+          <div>
             <button className='login-button' onClick={() => {navigate('/login')}}>Login</button>
             <button className='register-button' onClick={() => {navigate('/register')}}>Register</button>
           </div>
