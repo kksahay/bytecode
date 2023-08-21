@@ -1,28 +1,25 @@
 import Layout from "../components/layout/Layout";
 import useProblemset from "../hooks/useProblemset";
+import '../styles/Problemset.css'
 
 const Problemset = () => {
   const problems = useProblemset()
+  const ProblemInfo = () => {
+    return (
+      <ul className="problem-list">
+        {problems.map(problem => (
+          <li>
+            <a href={`/problemset/task/${problem?._id}`} className="p-name">{problem?._name}</a>
+            <span className="p-difficulty">{problem?._difficulty}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
   return (
     <Layout>
-      <div className="problem-list">
-        <table>
-          <thead>
-            <tr className="space-x-4 py-4">
-              <th>Name</th>
-              <th>Difficulty</th>
-            </tr>
-          </thead>
-          <tbody>
-            {problems.map(problem => (
-              <tr key={problem?._id}>
-                <td>{problem?._name}</td>
-                <td>{problem?._difficulty}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <div className="problem-heading">Introductory Problems</div>
+      <ProblemInfo />
     </Layout>
   );
 };
