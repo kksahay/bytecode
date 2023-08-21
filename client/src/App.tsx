@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage";
 import Problemset from "./pages/Problemset";
 import ProblemPage from "./pages/Problem";
 import "./App.css"
@@ -10,8 +9,7 @@ import Login from "./pages/Auth/Login";
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Homepage />} />
-      <Route path='/problemset' element={<Problemset />} />
+      <Route path='/' element={<Problemset />} />
       <Route path='/problemset/task/:id' element={<ProblemPage />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
