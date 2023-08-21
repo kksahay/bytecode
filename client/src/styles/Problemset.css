@@ -1,0 +1,32 @@
+.problem-list {
+    list-style-type: none;
+    padding: 0;
+    border-top: 1px solid gray;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    font-family: Calibri, Verdana, Tahoma, sans-serif;
+}
+.problem-list>li {
+    
+    display: flex;
+    line-height: 1.6;
+    border-bottom: 1px solid gray;
+    
+}
+.problem-list a {
+    flex-grow: 1;
+}
+.problem-list .p-difficulty {
+    font-size: 0.8rem;
+    line-height: 2;
+    opacity: 0.6;
+}
+.problem-heading {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    margin-top: 2vh;
+    font-family: Calibri, Verdana, Tahoma, sans-serif;
+}
