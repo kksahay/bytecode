@@ -1,11 +1,15 @@
 CREATE DATABASE leetcode;
 
-CREATE TABLE problems (
+CREATE TABLE problemset (
     _id serial PRIMARY KEY,
-    _name VARCHAR(100) NOT NULL,
-    _description TEXT,
+    _name varchar,
+    _description text,
     _difficulty VARCHAR(20),
-    _constraint VARCHAR(200)
+    _input varchar,
+    _output varchar,
+    _constraint text,
+    _sample_input text,
+    _sample_output text
 );
 
 CREATE TABLE users (

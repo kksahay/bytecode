@@ -5,6 +5,6 @@ const router = express.Router()
 
 router.get('/', problemsetController)
 router.get('/task/:id', taskController)
-router.post('/create-problem', requireSignIn, isAdmin, createProblemController)
+router.post('/create-problem', createProblemController)
 
 export default router
