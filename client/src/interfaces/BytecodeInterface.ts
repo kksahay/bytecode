@@ -6,7 +6,7 @@ export interface Problem {
     _constraint: string;
     _input: string;
     _output: string;
-    _example_input:string;
-    _example_output:string;
+    _sample_input:string;
+    _sample_output:string;
     _tests: number;
 }
