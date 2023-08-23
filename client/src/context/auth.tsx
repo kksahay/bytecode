@@ -1,12 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { LayoutProps} from "../interfaces/BytecodeInterface";
 
-const AuthContext = createContext()
 
-const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({
-    username: null,
-    token: ""
-  })
+const AuthContext = createContext({})
+
+const AuthProvider = ({ children }: LayoutProps) => {
+  const [auth, setAuth] = useState({})
   useEffect(() => {
     const data = localStorage.getItem('auth')
     if (data) {

@@ -39,7 +39,7 @@ const Login = () => {
     <Layout>
       {
         !auth?.token && (
-          <div className="container">
+          <div className="auth-form">
             <form onSubmit={handleSubmit}>
               <div>
                 <label>Username*: </label>

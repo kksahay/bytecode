@@ -21,8 +21,8 @@ const ProblemDetail = ({ problem }: { problem: Problem | null }) => {
             <div className="constraint">
                 <h4>Constraints</h4>
                 <ul>
-                    {problem?._constraint.split(', ').map(constraint => (
-                        <li>{constraint}</li>
+                    {problem?._constraint.split(', ').map((constraint, index) => (
+                        <li key={index}>{constraint}</li>
                     ))}
                 </ul>
             </div>

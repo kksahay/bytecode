@@ -8,7 +8,7 @@ const Problemset = () => {
     return (
       <ul className="problem-list">
         {problems.map(problem => (
-          <li>
+          <li key={problem._id}>
             <a href={`/problemset/task/${problem?._id}`} className="p-name">{problem?._name}</a>
             <span className="p-difficulty">{problem?._difficulty}</span>
           </li>
