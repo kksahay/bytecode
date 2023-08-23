@@ -14,17 +14,20 @@ const Header = () => {
     localStorage.removeItem('auth');
     navigate(location.pathname || '/')
   }
-  
+
   return (
     <div className='nav'>
-      <button className='nav-button' onClick={() => {navigate('/')}}>ByteCode</button>
+      <button className='nav-button' onClick={() => { navigate('/') }}>ByteCode</button>
       <div className='auth'>
         {auth?.token ? (
-          <button className='logout-button' onClick={handleLogout}>Logout</button>
+          <div>
+            <button className='username-button'>{auth?.username}</button>
+            <button className='logout-button' onClick={handleLogout}>Logout</button>
+          </div>
         ) : (
           <div>
-            <button className='login-button' onClick={() => {navigate('/login')}}>Login</button>
-            <button className='register-button' onClick={() => {navigate('/register')}}>Register</button>
+            <button className='login-button' onClick={() => { navigate('/login') }}>Login</button>
+            <button className='register-button' onClick={() => { navigate('/register') }}>Register</button>
           </div>
         )}
       </div>
