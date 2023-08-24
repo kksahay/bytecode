@@ -9,7 +9,8 @@ CREATE TABLE problemset (
     _output varchar,
     _constraint text,
     _sample_input text,
-    _sample_output text
+    _sample_output text,
+    _tests: integer
 );
 
 CREATE TABLE users (

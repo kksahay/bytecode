@@ -4,17 +4,19 @@ import "monaco-editor/esm/vs/basic-languages/cpp/cpp.contribution"
 import axios from "axios"
 import '../../styles/CodeEdior.css'
 import { useAuth } from "../../context/auth"
+import { Result } from "../../interfaces/BytecodeInterface"
 
-interface Result {
-  passed: number,
-  failed: number
-}
 const CodeEditor = ({ id, tests }: { id: string | undefined, tests: number | undefined }) => {
   const [code, setCode] = useState('')
-  const [result, setResult] = useState<Result | null>(null)
-  const [auth, setAuth] = useAuth()
+  const [result, setResult] = useState<Result | null>()
+  const [button, setButton] = useState(false)
+  const [message, setMessage] = useState<string>("")
+  // @ts-ignore
+  const [auth] = useAuth()
   const handleClick = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
+    setButton(true)
+    setMessage("")
     const blob = new Blob([code], { type: 'text/plain' })
     const file = new File([blob], "solution.cpp", { type: "text/plain" })
     const formData = new FormData()
@@ -27,8 +29,16 @@ const CodeEditor = ({ id, tests }: { id: string | undefined, tests: number | und
         }
       })
       setResult(data)
+      setButton(false)
+      if(data && data.passed === tests) {
+        setMessage("Accepted")
+      } else {
+        setMessage(`Wrong Answer on ${data.failed} testcases`)
+      }
     } catch (error) {
-      console.error(error);
+      // @ts-ignore
+      setMessage(error.response.data.message)
+      setButton(false)
     }
   }
   return (
@@ -50,14 +60,14 @@ const CodeEditor = ({ id, tests }: { id: string | undefined, tests: number | und
       {
         auth?.token ? (
           <div className="submit-section">
-            <button className="button" onClick={handleClick} disabled={result !== null}>Submit</button>
-            {result && ((result?.passed == tests) ?
-              (<div className="success">Accepted</div>) :
-              (<div className="failure">Wrong Answer on {result?.failed} Testcases</div>)
+            <button className="button" onClick={handleClick} disabled={button}>Submit</button>
+            {result && ((message === "Accepted") ?
+              (<div className="success">{message}</div>) :
+              (<div className="failure">{message}</div>)
             )}
           </div>
         ) : (<div className="login-failure">
-          Please <a href="/login" style={{ margin: '0 0.25rem' }}>login</a> to Submit
+          Please <a href="/login" style={{ margin: '0 0.25rem' }}>Login</a> to Submit
         </div>)
       }
     </>

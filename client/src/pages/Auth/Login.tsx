@@ -9,6 +9,7 @@ const Login = () => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [error, setError] = useState<string>('')
+  // @ts-ignore
   const [auth, setAuth] = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
@@ -31,6 +32,7 @@ const Login = () => {
         navigate(location.state || '/')
       }
     } catch (error) {
+      // @ts-ignore
       setError(error.response.data.message)
       setPassword('')
     }
@@ -39,7 +41,7 @@ const Login = () => {
     <Layout>
       {
         !auth?.token && (
-          <div className="container">
+          <div className="auth-form">
             <form onSubmit={handleSubmit}>
               <div>
                 <label>Username*: </label>

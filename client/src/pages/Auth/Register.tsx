@@ -10,7 +10,8 @@ const Register = () => {
     confirmPassword: ''
   })
   const [error, setError] = useState<string>('')
-  const [auth, setAuth] = useAuth()
+  // @ts-ignore
+  const [auth] = useAuth()
   const navigate = useNavigate()
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -28,6 +29,7 @@ const Register = () => {
         navigate('/login')
       }
     } catch (error) {
+      // @ts-ignore
       setError(error.response.data.message)
     }
   }
@@ -36,7 +38,7 @@ const Register = () => {
     <Layout>
       {
         !auth?.token && (
-          <div className="container">
+          <div className="auth-form">
             <form onSubmit={handleSubmit}>
               <div>
                 <label>Username: </label>

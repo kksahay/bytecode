@@ -1,4 +1,5 @@
-import ReactDOM from 'react-dom/client'
+// @ts-ignore
+import ReactDOM from 'react-dom';
 import App from './App.tsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'

@@ -19,7 +19,7 @@
     align-self: center;
     text-align: end;
 }
-.login-button, .logout-button, .register-button {
+.login-button, .logout-button, .register-button, .username-button {
     background-color: #292929;
     border: none;
     color: #FFFFFF;
