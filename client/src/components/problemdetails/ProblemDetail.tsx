@@ -8,15 +8,15 @@ const ProblemDetail = ({ problem }: { problem: Problem | null }) => {
                 <h1>{problem?._name}</h1>
             </div>
             <div className="description">
-                <p dangerouslySetInnerHTML={{ __html: problem?._description }} />
+                <p dangerouslySetInnerHTML={{ __html: problem?._description || ""}} />
             </div>
             <div className="input">
                 <h4>Input</h4>
-                <p dangerouslySetInnerHTML={{ __html: problem?._input }} />
+                <p dangerouslySetInnerHTML={{ __html: problem?._input || ""}} />
             </div>
             <div className="output">
                 <h4>Output</h4>
-                <p dangerouslySetInnerHTML={{ __html: problem?._output }} />
+                <p dangerouslySetInnerHTML={{ __html: problem?._output || ""}} />
             </div>
             <div className="constraint">
                 <h4>Constraints</h4>
@@ -29,9 +29,9 @@ const ProblemDetail = ({ problem }: { problem: Problem | null }) => {
             <div className="example">
                 <h4>Example</h4>
                 <p>Input</p>
-                <p dangerouslySetInnerHTML={{ __html: problem?._sample_input }} />
+                <p dangerouslySetInnerHTML={{ __html: problem?._sample_input || ""}} />
                 <p>Output</p>
-                <p dangerouslySetInnerHTML={{ __html: problem?._sample_output }} />
+                <p dangerouslySetInnerHTML={{ __html: problem?._sample_output || ""}} />
             </div>
         </div>
     );

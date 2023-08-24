@@ -10,6 +10,7 @@ const Register = () => {
     confirmPassword: ''
   })
   const [error, setError] = useState<string>('')
+  // @ts-ignore
   const [auth] = useAuth()
   const navigate = useNavigate()
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -28,6 +29,7 @@ const Register = () => {
         navigate('/login')
       }
     } catch (error) {
+      // @ts-ignore
       setError(error.response.data.message)
     }
   }

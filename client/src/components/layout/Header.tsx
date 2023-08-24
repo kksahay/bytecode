@@ -2,6 +2,7 @@ import { useAuth } from '../../context/auth'
 import '../../styles/Header.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 const Header = () => {
+  // @ts-ignore
   const [auth, setAuth] = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
