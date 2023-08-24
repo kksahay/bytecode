@@ -13,6 +13,9 @@ const PORT = process.env.SERVER_PORT
 app.use(cors())
 app.use(fileUpload())
 app.use(express.json())
+app.get('/', (req, res) => {
+    res.send("Working")
+})
 app.use('/api/v1/auth', authRoute)
 app.use('/api/v1/problemset', problemsetRoute)
 

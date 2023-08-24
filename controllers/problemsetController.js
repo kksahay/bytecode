@@ -1,11 +1,9 @@
 import { pool } from '../config/db.js'
-import fs from 'fs'
-import { exec } from 'child_process'
 
 export const problemsetController = async (req, res) => {
     try {
         const problemSet = await pool.query(
-            "SELECT * FROM problemset"
+            "SELECT _id, _name, _difficulty FROM problemset"
         )
         res.status(200).send(problemSet.rows)
     } catch (error) {
