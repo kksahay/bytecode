@@ -11,6 +11,7 @@ const CodeEditor = ({ id, tests }: { id: string | undefined, tests: number | und
   const [result, setResult] = useState<Result | null>()
   const [button, setButton] = useState(false)
   const [message, setMessage] = useState<string>("")
+  // @ts-ignore
   const [auth] = useAuth()
   const handleClick = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
@@ -35,6 +36,7 @@ const CodeEditor = ({ id, tests }: { id: string | undefined, tests: number | und
         setMessage(`Wrong Answer on ${data.failed} testcases`)
       }
     } catch (error) {
+      // @ts-ignore
       setMessage(error.response.data.message)
       setButton(false)
     }
