@@ -3,6 +3,7 @@ client
 npm-debug.log
 yarn-error.log
 Dockerfile
+database.sql
 .dockerignore
 *.log
 *.bak
