@@ -1,0 +1,12 @@
+node_modules
+client
+npm-debug.log
+yarn-error.log
+Dockerfile
+.dockerignore
+*.log
+*.bak
+*.swp
+*.swo
+*.zip
+*.tar

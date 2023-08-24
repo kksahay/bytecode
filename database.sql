@@ -10,7 +10,7 @@ CREATE TABLE problemset (
     _constraint text,
     _sample_input text,
     _sample_output text,
-    _tests: integer
+    _tests integer
 );
 
 CREATE TABLE users (

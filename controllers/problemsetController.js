@@ -31,11 +31,11 @@ export const createProblemController = async (req, res) => {
         if (!description) { return res.send("Problem Description is missing") }
         if (!difficulty) { return res.send("Problem difficulty is not given") }
         if (!constraint) { return res.send("Problem constraint is not given") }
-        console.log(constraint)
         const problem = await pool.query(
             "INSERT INTO problemset (_name, _description, _difficulty, _input, _output, _constraint, _sample_input, _sample_output, _tests) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
             [name, description, difficulty, input, output, constraint, sample_input, sample_output, tests]
         )
+        
         res.status(200).send({
             success: true
         })
