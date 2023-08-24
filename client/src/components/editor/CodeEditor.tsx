@@ -1,6 +1,5 @@
 import { useState } from "react"
 import MonacoEditor from "react-monaco-editor"
-import "monaco-editor/esm/vs/basic-languages/cpp/cpp.contribution"
 import axios from "axios"
 import '../../styles/CodeEdior.css'
 import { useAuth } from "../../context/auth"
