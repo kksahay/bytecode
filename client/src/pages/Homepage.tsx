@@ -2,7 +2,7 @@ import Layout from "../components/layout/Layout"
 
 const Homepage = () => {
   return (
-    <Layout>
+    <Layout title={"ByteCode"}>
       <div>Homepage</div>
     </Layout>
   )

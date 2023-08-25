@@ -24,7 +24,7 @@ const ProblemPage = () => {
   }, [])
 
   return (
-    <Layout>
+    <Layout title={`${problem?._name} |ByteCode`}>
       <div className="problem-section">
         <div className="problem-details">
           <ProblemDetail problem={problem} />

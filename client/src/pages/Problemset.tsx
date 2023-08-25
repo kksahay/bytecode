@@ -17,7 +17,7 @@ const Problemset = () => {
     )
   }
   return (
-    <Layout>
+    <Layout title={"ByteCode"}>
       <div className="problem-heading">Introductory Problems</div>
       <ProblemInfo />
     </Layout>

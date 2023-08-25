@@ -1,13 +1,12 @@
-import { ReactNode } from 'react';
 import Header from './Header';
+import { Helmet } from "react-helmet";
 
-interface LayoutProps {
-    children: ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, title }: any) => {
     return (
         <div>
+            <Helmet>
+                <title>{title}</title>
+            </Helmet>
             <Header />
             <main style={{ minHeight: '80vh' }}>
                 {children}
@@ -15,5 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
     );
 };
-
+Layout.defaultProps = {
+    title: "ByteCode"
+}
 export default Layout;
